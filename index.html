@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: black;
+        }
+        .calculator-box {
+            color: black;
+			border: 2px black;
+			padding: 20px;
+			box-shadow: 0 4px 8px;
+			background-color: black;
+			color: white;
+			font-size: 25px;
+			border-radius: 1000px;
+			text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin: 0 0 20px 0;
+        }
+        input, select, button { 
+            width: 25%;
+        	padding: 8px;
+        	margin-bottom: 15px;
+        	border: 1px solid #ccc;
+        	border-radius: 5px;
+        	font-size: 14px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        #result {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-box">
+        <h1>Calculator</h1>
+        <input type="number" id="num1" placeholder="First number">
+        <input type="number" id="num2" placeholder="Second number">
+
+        <br>
+        <br>
+
+        <button onclick="calculate()">Calculate</button>
+        <div id="result">
+        
+        <select id="operation">
+           <option value="add">Add</option>
+           <option value="sub">Subtract</option>
+           <option value="mul">Multiply</option>
+           <option value="div">Divide</option>
+        </select>
+        </div>
+    </div>
+
+<script>
+function calculate() {
+    let num1 = Number(document.getElementById("num1").value);
+    let num2 = Number(document.getElementById("num2").value);
+    let operation = document.getElementById("operation").value;
+    let result;
+    
+    if (operation === "add"){
+        result = num1 + num2;
+    }
+    else if (operation === "sub"){
+        result = num1 - num2;
+    }
+    else if (operation === "mul"){
+        result = num1 * num2;
+    }
+    else if (operation === "div"){
+        if (num2 === 0){
+            alert("Cannot divide by zero");
+            return;
+        }
+        result = num1 / num2;
+    }
+    document.getElementById("result").textContent = result;
+}
+</script>
+</body>
+</html>
